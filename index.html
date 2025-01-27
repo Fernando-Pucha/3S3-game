@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donut Cat Dash</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <div id="start-screen" class="screen">
+    <h1>Donut Dash</h1>
+    <img src="images/garfield-index-removebg-preview.png" alt="" class="logo-img" />
+    <br />
+    <button id="start-button">Start Game</button>
+    <p>Use the left and right arrow to control the cat!</p>
+    <img src="./images/arrows.png" alt="" class="arrows-img" />
+  </div>
+
+  <div id="game-screen" class="screen hidden">
+    <div id="stats">
+      <p id="lives" class="lives">Lives: <span id="numberLives" class="plives">3</span></p>
+      <p id="score" class="lives">Score: <span id="numberScore" class="plives">0</span></p>
+    </div>
+    <div id="game-area">
+      <div id="cat"></div>
+    </div>
+  </div>
+
+  <div id="game-over-screen" class="screen hidden">
+    <h1>Game Over</h1>
+    <p>Your Score: <span id="final-score">0</span></p>
+    <button id="restart-button">Restart</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
