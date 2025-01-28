@@ -2,6 +2,7 @@
 window.onload = function () {
   const startButton = document.getElementById('start-button');
   const restartButton = document.getElementById('restart-button');
+  const restartButtonWin = document.getElementById('restart-button-win');
   let game; // added
 
   startButton.addEventListener("click", function () {
@@ -38,13 +39,18 @@ window.onload = function () {
   function handleKeyup(event) {
     const key = event.key;
     if (["ArrowLeft", "ArrowRight"].includes(key)) {
-      game.player.directionX = 0; // Detener el movimiento horizontal
+      game.player.directionX = 0; // Detiene el movimiento horizontal
     }
   }
   window.addEventListener("keyup", handleKeyup); 
 
   // Add an event listener to the restart button
   restartButton.addEventListener("click", function () {
+    // Call the restartGame function when the button is clicked
+    restartGame();
+  });
+
+  restartButtonWin.addEventListener("click", function () {
     // Call the restartGame function when the button is clicked
     restartGame();
   });
