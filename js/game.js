@@ -5,6 +5,7 @@ class Game {
         this.gameEndScreen = document.getElementById("game-over-screen");
         this.numberScore=document.getElementById('numberScore')
         this.numberLives=document.getElementById('numberLives')
+        this.finalScore=document.getElementById('final-score')
         this.player = new Cat(
             this.gameScreen,
             500,
@@ -123,6 +124,8 @@ class Game {
         // Hide game screen
         this.gameScreen.style.display = "none";
         // Show end game screen
-        this.gameEndScreen.style.display = "block";
+        this.gameEndScreen.style.display = "flex";
+        this.finalScore.innerText=this.score;
+
     }
 }
