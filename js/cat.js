@@ -53,18 +53,19 @@ class Cat {
     }
 
     didCollide(obstacle) {
+        const buffer = 10; // Ajuste para margen
         const playerRect = this.element.getBoundingClientRect();
         const obstacleRect = obstacle.element.getBoundingClientRect();
-
+      
         if (
-            playerRect.left < obstacleRect.right &&
-            playerRect.right > obstacleRect.left &&
-            playerRect.top < obstacleRect.bottom &&
-            playerRect.bottom > obstacleRect.top
+          playerRect.left + buffer < obstacleRect.right - buffer &&
+          playerRect.right - buffer > obstacleRect.left + buffer &&
+          playerRect.top + buffer < obstacleRect.bottom - buffer &&
+          playerRect.bottom - buffer > obstacleRect.top + buffer
         ) {
-            return true;
+          return true;
         } else {
-            return false;
+          return false;
         }
-    }
+      }
 }
