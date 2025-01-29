@@ -26,6 +26,7 @@ class Game {
         this.gameIntervalId;
         this.gameLoopFrequency = Math.round(1000 / 60);  // 60fps
 
+        // Para el mensaje de nivel
         this.levelMessage = document.getElementById('level-message');
 
         // Para el sonido
@@ -33,14 +34,12 @@ class Game {
         this.hitSound = new Audio('./sounds/hit.mp3');
         this.soundStart = new Audio('./sounds/special-loop.mp3');
         this.soundGameOver = new Audio('./sounds/game-over.mp3');
+        this.soundYouWin = new Audio('./sounds/you-win.mp3');
     }
 
     start() {
 
-        this.showLevelMessage('Nivel 1');
-        setTimeout(() => {
-            this.levelMessage.style.display = 'none'; // Ocultar el mensaje después de 5 segundos
-        }, 2000);
+        this.showLevelMessage('Nivel 1');  
 
         // Hide the start screen
         this.startScreen.style.display = "none";
@@ -49,7 +48,7 @@ class Game {
 
         // Runs the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
         this.gameIntervalId = setInterval(() => {
-            this.soundStart.play();
+            this.soundStart.play();           
             this.gameLoop()
         }, this.gameLoopFrequency)
     }
@@ -59,7 +58,6 @@ class Game {
         if (this.score === 5) {
             this.showLevelMessage('Nivel 2');
         }
-
         if (this.score === 10) {
             this.showLevelMessage('Nivel 3');
         }
@@ -72,19 +70,22 @@ class Game {
         }
     }
 
-
-
     update() {
         this.player.move();
-        // Aumentar la velocidad de los obstáculos si el puntaje es mayor a 10
+        // Aumentar la velocidad del yunque y donut si el puntaje es mayor a 10 y a 5 respectivamente
         if (this.score > 10) {
             this.obstacles.forEach(obstacle => {
                 obstacle.top += 5;
             });
         }
+        if (this.score > 5) {
+            this.donuts.forEach(donut => {
+                donut.top += 3;
+            });
+            
+        }
 
-
-        // Yunque
+        // Yunque aparece en pantalla
         for (let i = 0; i < this.obstacles.length; i++) {
             const obstacle = this.obstacles[i];
             obstacle.move();
@@ -103,13 +104,7 @@ class Game {
                 i--;
             }
         }
-        // Donut
-
-        if (this.score > 5) {
-            this.donuts.forEach(donut => {
-                donut.top += 3;
-            });
-        }
+        // Donut aparace en pantalla
         for (let i = 0; i < this.donuts.length; i++) {
             const donut = this.donuts[i];
             donut.move();
@@ -133,15 +128,15 @@ class Game {
 
         }
 
-        // If the lives are 0, end the game
+        // Si la vida es 0, pierdes el juego
         if (this.lives === 0) {
             this.endGame();
         }
-
+        // Si la puntuación es 15, ganas el juego
         if (this.score === 15) {
             this.youWin();
         }
-        // Create a new obstacle based on a random probability, when there is no other obstacles on the screen
+        // Create a new yunke and donut based on a random probability, when there is no other obstacles on the screen
         if (Math.random() > 0.98 && this.obstacles.length < 1) {
             this.obstacles.push(new Obstacle(this.gameScreen));
         }
@@ -150,6 +145,7 @@ class Game {
             this.donuts.push(new Donut(this.gameScreen));
         }
     }
+    // metodo para mostrar mensaje de nivel
     showLevelMessage(message) {
         this.levelMessage.innerText = message;
         this.levelMessage.style.display = 'block';
@@ -157,7 +153,7 @@ class Game {
             this.levelMessage.style.display = 'none';
         }, 2000);
     }
-    // new method responsible for ending the game
+    // metodo para terminar el juego
     endGame() {
         this.soundStart.pause();
         this.player.element.remove();
@@ -170,14 +166,14 @@ class Game {
         this.finalScore.innerText = this.score;       
 
     }
-
+    // metodo para ganar el juego
     youWin() {
         
         this.soundStart.pause();
         this.player.element.remove();
         this.obstacles.forEach(obstacle => obstacle.element.remove());
         this.donuts.forEach(obstacle => obstacle.element.remove());
-        this.gameIsOver = true;
+        this.soundYouWin.play();
         this.gameScreen.style.display = "none";
         this.youWinScreen.style.display = "flex";
         this.finalScoreWin.innerText = this.score;

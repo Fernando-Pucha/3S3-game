@@ -8,7 +8,7 @@ body {
     overflow: hidden;
 }
 
-#start-screen {
+.startScreen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@ body {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-#start-screen h1 {
+.startScreen h1 {
     font-size: 70px
 }
 
@@ -25,18 +25,11 @@ body {
     width: 350px;
 }
 
-#game-container {
-    display: flex;
-    width: 100vw;
-    padding: 20px 0px;
-    justify-content: center;
-}
-
 .arrows-img {
     width: 150px;
 }
 
-#game-screen {
+.gameScreen {
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -109,11 +102,11 @@ body button:hover {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
-    display: none; /* Se oculta al principio */
-  }
+    display: none;
+}
 
-  #you-win-screen {
-    display: none; /* Se oculta al principio */
+.youWinScreen {
+    display: none;
     flex-direction: column;
     align-items: center;
     padding: 20px;
@@ -121,10 +114,10 @@ body button:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-#you-win-screen h1 {
+.youWinScreen h1 {
     font-size: 70px
 }
-#you-win-screen img {
+
+.youWinScreen img {
     width: 350px;
 }
-  

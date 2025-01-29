@@ -42,16 +42,14 @@ window.onload = function () {
       game.player.directionX = 0; // Detiene el movimiento horizontal
     }
   }
-  window.addEventListener("keyup", handleKeyup); 
+  window.addEventListener("keyup", handleKeyup);
 
   // Add an event listener to the restart button
   restartButton.addEventListener("click", function () {
-    // Call the restartGame function when the button is clicked
     restartGame();
   });
 
   restartButtonWin.addEventListener("click", function () {
-    // Call the restartGame function when the button is clicked
     restartGame();
   });
 
