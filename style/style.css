@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    user-select: none; /* Para que no se pueda seleccionar texto */
 }
 
 .startScreen {
@@ -74,6 +75,9 @@ body {
     width: 60%;
     height: 60%;
 }
+.screenHidden p {
+    font-size: 30px
+}
 
 body button {
     font-size: 20px;
@@ -118,6 +122,9 @@ body button:hover {
     font-size: 70px
 }
 
+.youWinScreen p {
+    font-size: 30px
+}
 .youWinScreen img {
     width: 350px;
 }

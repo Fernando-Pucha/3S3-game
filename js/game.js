@@ -55,12 +55,7 @@ class Game {
 
     gameLoop() {
         this.update();
-        if (this.score === 5) {
-            this.showLevelMessage('Nivel 2');
-        }
-        if (this.score === 10) {
-            this.showLevelMessage('Nivel 3');
-        }
+        
         if (this.score === 15) {
             clearInterval(this.gameIntervalId)
         }
@@ -114,6 +109,12 @@ class Game {
                 donut.element.remove();
                 this.donuts.splice(i, 1);
                 this.score++;
+                if (this.score === 5) {
+                    this.showLevelMessage('Nivel 2');
+                }
+                if (this.score === 10) {
+                    this.showLevelMessage('Nivel 3');
+                }
                 this.numberScore.innerText = this.score
                 i--;
             }
