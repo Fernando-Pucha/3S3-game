@@ -38,9 +38,7 @@ class Game {
     }
 
     start() {
-
         this.showLevelMessage('Nivel 1');  
-
         // Hide the start screen
         this.startScreen.style.display = "none";
         // Show the game screen
@@ -54,12 +52,10 @@ class Game {
     }
 
     gameLoop() {
-        this.update();
-        
+        this.update();        
         if (this.score === 15) {
             clearInterval(this.gameIntervalId)
         }
-
         if (this.gameIsOver) {
             clearInterval(this.gameIntervalId)
         }

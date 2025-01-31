@@ -19,11 +19,11 @@ class Cat {
     }
 
     move() {
-        // Update player's car position based on directionX and directionY
+        // Update cat position based on directionX and directionY
         this.left += this.directionX;
         this.top += this.directionY;
 
-        // Ensure the player's car stays within the game screen
+        // Ensure the cat stays within the game screen
         // handles left hand side
         if (this.left < 10) {
             this.left = 10;

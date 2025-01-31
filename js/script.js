@@ -27,9 +27,11 @@ window.onload = function () {
       switch (key) {
         case "ArrowLeft":
           game.player.directionX = -5;
+          reflejarImg("scaleX(-1)");
           break;
         case "ArrowRight":
           game.player.directionX = 5;
+          reflejarImg("scaleX(1)");
           break;
       }
     }
@@ -56,6 +58,10 @@ window.onload = function () {
   // The function that reloads the page to start a new game
   function restartGame() {
     location.reload();
+  }
+
+  function reflejarImg(scale){
+    game.player.element.style.transform = scale;
   }
 
 }
